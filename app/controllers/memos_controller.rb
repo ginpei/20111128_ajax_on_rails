@@ -11,33 +11,6 @@ class MemosController < ApplicationController
     end
   end
 
-  # GET /memos/1
-  # GET /memos/1.json
-  def show
-    @memo = Memo.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @memo }
-    end
-  end
-
-  # GET /memos/new
-  # GET /memos/new.json
-  def new
-    @memo = Memo.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @memo }
-    end
-  end
-
-  # GET /memos/1/edit
-  def edit
-    @memo = Memo.find(params[:id])
-  end
-
   # POST /memos
   # POST /memos.json
   def create
