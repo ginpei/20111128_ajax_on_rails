@@ -1,3 +1,8 @@
-// Place all the styles related to the memos controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.memo {
+  border: solid 1px #eee;
+  margin: 10px;
+  padding: 10px;
+}
+.memo .editor {
+  display: none;
+}

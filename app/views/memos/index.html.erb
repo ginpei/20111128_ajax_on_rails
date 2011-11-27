@@ -1,22 +1,21 @@
 <h1>Listing memos</h1>
 
-<table>
-  <tr>
-    <th>Body</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<div id="memos">
 <% @memos.each do |memo| %>
-  <tr>
-    <td><%= memo.body %></td>
-    <td><%= link_to 'Show', memo %></td>
-    <td><%= link_to 'Edit', edit_memo_path(memo) %></td>
-    <td><%= link_to 'Destroy', memo, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+  <div class="memo">
+    <div class="viewer">
+      <span class="body"><%= memo.body %></span>
+      <%= button_tag 'Edit', class: 'edit', type: :button %>
+    </div>
+    <div class="editor">
+      <div>
+        <%= button_tag 'Cancel', class: 'cancel', type: :button %>
+      </div>
+      <%= render 'form', memo: memo %>
+    </div>
+  </div>
 <% end %>
-</table>
+</div>
 
 <br />
 
