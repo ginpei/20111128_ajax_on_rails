@@ -1,0 +1,12 @@
+<div class="memo">
+  <div class="viewer">
+    <span class="body"><%= memo.body %></span>
+    <%= button_tag 'Edit', class: 'edit', type: :button %>
+  </div>
+  <div class="editor">
+    <div>
+      <%= button_tag 'Cancel', class: 'cancel', type: :button %>
+    </div>
+    <%= render 'form', memo: memo, submit_text: 'Update' %>
+  </div>
+</div>

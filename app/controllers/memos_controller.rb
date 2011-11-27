@@ -3,6 +3,7 @@ class MemosController < ApplicationController
   # GET /memos.json
   def index
     @memos = Memo.all
+    @new_memo = Memo.new
 
     respond_to do |format|
       format.html # index.html.erb
@@ -42,15 +43,14 @@ class MemosController < ApplicationController
   def create
     @memo = Memo.new(params[:memo])
 
-    respond_to do |format|
-      if @memo.save
-        format.html { redirect_to @memo, notice: 'Memo was successfully created.' }
-        format.json { render json: @memo, status: :created, location: @memo }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @memo.errors, status: :unprocessable_entity }
-      end
+    if @memo.update_attributes(params[:memo])
+      status = 'success'
+      html = render_to_string partial: 'show', locals: { memo: @memo }
+    else
+      status = 'error'
     end
+
+    render json: { status: status, data: @memo, html: html }
   end
 
   # PUT /memos/1

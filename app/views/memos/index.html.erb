@@ -2,21 +2,11 @@
 
 <div id="memos">
 <% @memos.each do |memo| %>
-  <div class="memo">
-    <div class="viewer">
-      <span class="body"><%= memo.body %></span>
-      <%= button_tag 'Edit', class: 'edit', type: :button %>
-    </div>
-    <div class="editor">
-      <div>
-        <%= button_tag 'Cancel', class: 'cancel', type: :button %>
-      </div>
-      <%= render 'form', memo: memo %>
-    </div>
-  </div>
+  <%= render 'show', memo: memo %>
 <% end %>
 </div>
 
 <br />
 
-<%= link_to 'New Memo', new_memo_path %>
+<h1>New memo</h1>
+<%= render 'form', memo: @new_memo, submit_text: 'Create' %>

@@ -15,6 +15,17 @@ $ ->
       # 表示を戻す
       toggleEditor $container
 
+  $('#new_memo')
+    .on 'ajax:complete', (event, ajax, status) ->
+      response = $.parseJSON(ajax.responseText)
+      html = response.html
+ 
+      # 画面に追加
+      $('#memos').append html
+
+      # フォームを初期化
+      $(this)[0].reset()
+
 # 表示モードと編集モードを切り替える。
 toggleEditor = ($container) ->
   # 表示、非表示を切り替え
