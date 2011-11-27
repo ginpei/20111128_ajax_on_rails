@@ -73,9 +73,6 @@ class MemosController < ApplicationController
     @memo = Memo.find(params[:id])
     @memo.destroy
 
-    respond_to do |format|
-      format.html { redirect_to memos_url }
-      format.json { head :ok }
-    end
+    render json: { status: 'success', data: @memo }
   end
 end

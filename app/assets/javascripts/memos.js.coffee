@@ -15,6 +15,10 @@ $ ->
       # 表示を戻す
       toggleEditor $container
 
+    .on 'ajax:complete', '.delete_memo', (event, ajax, status) ->
+      # 項目を削除
+      $(this).closest('.memo').remove()
+
   $('#new_memo')
     .on 'ajax:complete', (event, ajax, status) ->
       response = $.parseJSON(ajax.responseText)

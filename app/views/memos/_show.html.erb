@@ -8,5 +8,8 @@
       <%= button_tag 'Cancel', class: 'cancel', type: :button %>
     </div>
     <%= render 'form', memo: memo, submit_text: 'Update' %>
+    <%= form_for memo, method: :delete, remote: true, html: { id: nil, class: 'delete_memo' } do |f| %>
+      <%= f.submit 'Destroy' %>
+    <% end %>
   </div>
 </div>
