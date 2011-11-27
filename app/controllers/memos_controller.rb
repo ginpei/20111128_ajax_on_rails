@@ -58,15 +58,13 @@ class MemosController < ApplicationController
   def update
     @memo = Memo.find(params[:id])
 
-    respond_to do |format|
-      if @memo.update_attributes(params[:memo])
-        format.html { redirect_to @memo, notice: 'Memo was successfully updated.' }
-        format.json { head :ok }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @memo.errors, status: :unprocessable_entity }
-      end
+    if @memo.update_attributes(params[:memo])
+      status = 'success'
+    else
+      status = 'error'
     end
+
+    render json: { status: status, data: @memo }
   end
 
   # DELETE /memos/1
